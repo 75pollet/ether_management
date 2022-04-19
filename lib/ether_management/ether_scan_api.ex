@@ -10,7 +10,7 @@ defmodule EtherManagement.EtherScanApi do
   @doc """
   Fetches the transaction with the given hash from the etherscan api.
   """
-  @spec fetch_transaction(string()) :: {:ok, map()} | {:error, any()}
+  @spec fetch_transaction(String.t()) :: {:ok, map()} | {:error, any()}
   def fetch_transaction(tx_hash) do
     tx_hash
     |> fetch_transaction_url()

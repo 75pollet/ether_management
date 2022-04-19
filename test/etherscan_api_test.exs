@@ -21,4 +21,10 @@ defmodule EtherManagement.EtherScanApiTest do
       assert {:error, _results} = EtherManagement.EtherScanApi.fetch_transaction("invalid")
     end
   end
+
+  test "fetch_fetch_lastest_block_number/0" do
+    use_cassette "fetch latest block number" do
+      assert {:ok, _results} = EtherManagement.EtherScanApi.fetch_lastest_block_number()
+    end
+  end
 end

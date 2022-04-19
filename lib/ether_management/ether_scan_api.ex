@@ -18,6 +18,17 @@ defmodule EtherManagement.EtherScanApi do
     |> handle_response()
   end
 
+  @spec fetch_lastest_block_number() :: {:ok, String.t()} | {:error, any()}
+  def fetch_lastest_block_number do
+    fetch_lastestblock_number()
+    |> HTTPoison.get(@headers)
+    |> handle_response()
+  end
+
+  defp fetch_lastestblock_number do
+    "#{@base_url}module=proxy&action=eth_blockNumber&apikey=#{@api_key}"
+  end
+
   defp fetch_transaction_url(tx_hash) do
     "#{@base_url}module=proxy&action=eth_getTransactionByHash&txhash=#{tx_hash}&apikey=#{@api_key}"
   end

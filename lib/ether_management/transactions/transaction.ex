@@ -35,4 +35,11 @@ defmodule EtherManagement.Transactions.Transaction do
       :gas
     ])
   end
+
+  def update_incomplete_transactions_query(new_block_number) do
+    from(t in __MODULE__,
+      where: t.complete == false and ^new_block_number - t.block_number >= 2,
+      update: [set: [complete: true]]
+    )
+  end
 end

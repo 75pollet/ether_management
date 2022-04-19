@@ -11,6 +11,12 @@ defmodule EtherManagement.Transactions do
     |> Repo.insert()
   end
 
+  def update_incomplete_transactions(new_block_number) do
+    new_block_number
+    |> Transaction.update_incomplete_transactions_query()
+    |> Repo.update_all([])
+  end
+
   defp convert_block_number_to_decimal(%{"block_number" => block_number} = attrs) do
     Map.replace(attrs, "block_number", Utils.convert_hex_to_decimal(block_number))
   end

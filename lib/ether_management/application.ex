@@ -15,7 +15,8 @@ defmodule EtherManagement.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: EtherManagement.PubSub},
       # Start the Endpoint (http/https)
-      EtherManagementWeb.Endpoint
+      EtherManagementWeb.Endpoint,
+      EtherManagement.Scheduler
       # Start a worker by calling: EtherManagement.Worker.start_link(arg)
       # {EtherManagement.Worker, arg}
     ]

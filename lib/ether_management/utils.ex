@@ -6,7 +6,7 @@ defmodule EtherManagement.Utils do
   end
 
   def convert_hex_to_decimal("0x" <> hex) do
-    {int, _} = Integer.parse(hex)
+    {int, _} = Integer.parse(hex, 16)
     int
   end
 end

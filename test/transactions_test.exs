@@ -22,7 +22,7 @@ defmodule EtherManagement.TranscationsTest do
     }
 
     assert {:ok, transaction} = Transactions.create_transaction(valid_attrs)
-    assert transaction.block_number == 4
+    assert transaction.block_number == 4_954_885
     assert transaction.from == "0x0fe426d8f95510f4f0bac19be5e1252c4127ee00"
   end
 

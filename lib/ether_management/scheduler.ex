@@ -1,4 +1,9 @@
 defmodule EtherManagement.Scheduler do
+  @moduledoc """
+  This module contains a repetitive process that performs the task of updating 
+  incomplete transactions whose block confirmations are greater than or equal
+  to 2.
+  """
   alias EtherManagement.EtherScanApi
   alias EtherManagement.Utils
 

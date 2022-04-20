@@ -1,4 +1,7 @@
 defmodule EtherManagement.Transactions.Transaction do
+  @moduledoc """
+  This module is the schema for transactions
+  """
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query
@@ -18,6 +21,7 @@ defmodule EtherManagement.Transactions.Transaction do
     field :gas, :string
   end
 
+  @spec changeset(map()) :: Ecto.Changeset.t()
   def changeset(attrs) do
     %__MODULE__{}
     |> cast(attrs, [
@@ -34,8 +38,13 @@ defmodule EtherManagement.Transactions.Transaction do
       :input,
       :gas
     ])
+    |> unique_constraint(:hash, name: :transactions_pkey)
   end
 
+  @doc """
+  returns a query that updates the `complete` column on incomplete transactions to `true`
+  """
+  @spec update(incomplete_transactions_query(integer) :: Ecto.Query.t())
   def update_incomplete_transactions_query(new_block_number) do
     from(t in __MODULE__,
       where: t.complete == false and ^new_block_number - t.block_number >= 2,

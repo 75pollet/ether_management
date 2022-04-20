@@ -1,0 +1,10 @@
+<div>
+<h2 style="text-align: center">Enter Transaction Hash</h2>
+<%= form_for :new_ether, Routes.ether_management_path(@conn, :create), fn f -> %>
+<%= text_input f, :tx_hash %>
+<div>
+<%= submit "Submit" %>
+<%= button("View all transactions", to: Routes.ether_management_path(@conn, :index), method: :get) %>
+</div>
+<% end %>
+</div>

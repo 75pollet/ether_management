@@ -17,7 +17,9 @@ defmodule EtherManagementWeb.Router do
   scope "/", EtherManagementWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/ethers/new", EtherManagementController, :new
+    post "/ethers", EtherManagementController, :create
+    get "/", EtherManagementController, :index
   end
 
   # Other scopes may use custom stacks.

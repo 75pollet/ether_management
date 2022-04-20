@@ -1,0 +1,25 @@
+<div>
+    <h2 style="text-align: center">Transactions</h2>
+    <table class="format-table">
+    <thead>
+        <tr>
+            <th >Hash</th>            
+            <th >Block number</th>    
+            <th> Block Hash</th>
+            <th >complete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for transaction <- @transactions do %>
+        <tr>
+           <td class ="wrap"><%= transaction.hash %></td>            
+           <td> <%= transaction.block_number %></td> 
+           <td> <%= transaction.block_hash %></td>   
+           <td> <%= transaction.complete %></td>
+         
+         </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <span><%= button "Submit New Transaction", to: Routes.ether_management_path(@conn, :new), method: :get %></span>
+</div>

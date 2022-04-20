@@ -44,7 +44,7 @@ defmodule EtherManagement.Transactions.Transaction do
   @doc """
   returns a query that updates the `complete` column on incomplete transactions to `true`
   """
-  @spec update(incomplete_transactions_query(integer) :: Ecto.Query.t())
+  @spec update_incomplete_transactions_query(integer) :: Ecto.Query.t()
   def update_incomplete_transactions_query(new_block_number) do
     from(t in __MODULE__,
       where: t.complete == false and ^new_block_number - t.block_number >= 2,

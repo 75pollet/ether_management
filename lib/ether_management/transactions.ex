@@ -12,7 +12,7 @@ defmodule EtherManagement.Transactions do
   @spec create_transaction(map()) :: {:ok, %Transaction{}} | {:error, Ecto.Changeset.t()}
   def create_transaction(attrs) do
     attrs
-    |> Utils.santize_transaction_keys()
+    |> Utils.sanitize_transaction_keys()
     |> convert_block_number_to_decimal()
     |> Transaction.changeset()
     |> Repo.insert()

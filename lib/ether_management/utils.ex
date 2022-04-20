@@ -4,11 +4,11 @@ defmodule EtherManagement.Utils do
   """
 
   @doc """
-  `EtherManagement.Utils.santize_transaction_keys/1` converts string keys on a map from camelcase
+  `EtherManagement.Utils.sanitize_transaction_keys/1` converts string keys on a map from camelcase
   to undercores.
   """
   @spec sanitize_transaction_keys(map()) :: map()
-  def santize_transaction_keys(transactions) do
+  def sanitize_transaction_keys(transactions) do
     transactions
     |> Enum.map(fn {key, value} -> {Macro.underscore(key), value} end)
     |> Enum.into(%{})
